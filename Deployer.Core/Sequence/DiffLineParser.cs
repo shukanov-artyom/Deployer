@@ -25,15 +25,16 @@ namespace Deployer.Core.Sequence
                 DiffActionType action = new ActionLetterParser(letter).Action;
                 string path = line.Substring(1).Trim();
                 IDiffActionItemTypeInference inference;
-                if (action == DiffActionType.Deleted)
-                {
-                    inference = new HeuristicsInference();
-                }
-                else
-                {
-                    inference = new DiskBasedInference(options, path);
-                }
-                DiffActionItemTargetType target = inference.Infer();
+                //                if (action != DiffActionType.Deleted)
+                //                {
+                //                    inference = new DiskBasedInference(options);
+                //                }
+                //                else
+                //                {
+                //                    inference = new HeuristicsInference(options);
+                //                }
+                inference = new HeuristicsInference(options);
+                DiffActionItemTargetType target = inference.Infer(path);
                 return new DiffActionItem(target, action, path);
             }
         }

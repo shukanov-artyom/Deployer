@@ -10,6 +10,7 @@ namespace Deployer.Core.Filtering
         {
             yield return new SqlScriptsFilter();
             yield return new WebsiteFolderContentsFilter();
+            yield return new WebConfigFilter();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

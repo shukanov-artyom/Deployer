@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Deployer.Core.ActionItems;
 using Deployer.Core.Filtering;
 using Deployer.Core.Ordering;
+using Deployer.Core.PathConversion;
 using Deployer.Core.Sequence;
+using Deployer.Core.ToCmd;
 
 namespace Deployer.Core.FluentSyntax
 {
@@ -25,23 +28,38 @@ namespace Deployer.Core.FluentSyntax
         }
 
         public static IEnumerable<DiffActionItem> ConvertPathsToRemoteMachineFormat(
-            this IEnumerable<DiffActionItem> sequence,
-            ApplicationOptions options)
+            this IEnumerable<DiffActionItem> sequence)
         {
-            throw new NotImplementedException();
+            IEnumerable<IPathConversion> conversions = new List<IPathConversion>()
+            {
+                new ToWebsiteSubfolderConversion(),
+                new ToUnixPathConversion()
+            };
+            PathConverter converter = new PathConverter(conversions);
+            foreach (var item in sequence)
+            {
+                string convertedPath = converter.Convert(item.ItemRelativePath);
+                yield return new DiffActionItem(item.TargetType,
+                    item.Action,
+                    convertedPath);
+            }
         }
 
         public static IEnumerable<string> ConvertToCmdCommands(
-            this IEnumerable<DiffActionItem> orderedSequence)
+            this IEnumerable<DiffActionItem> orderedSequence,
+            ApplicationOptions options)
         {
-            throw new NotImplementedException();
+            foreach (var item in orderedSequence)
+            {
+                yield return new ToCmdConverterFactory(options, item).Create().Convert(item);
+            }
         }
 
         public static void SaveToFile(
             this IEnumerable<string> lines,
             string targetFilePath)
         {
-            throw new NotImplementedException();
+            File.WriteAllLines(targetFilePath, lines);
         }
     }
 }

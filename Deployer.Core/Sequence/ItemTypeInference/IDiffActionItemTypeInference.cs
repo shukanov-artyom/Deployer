@@ -9,6 +9,6 @@ namespace Deployer.Core.Sequence.ItemTypeInference
         /// Infers whether a type of element (file, folder) which has been a target for a change in SVN diff.
         /// </summary>
         /// <returns>Inferred type.</returns>
-        DiffActionItemTargetType Infer();
+        DiffActionItemTargetType Infer(string path);
     }
 }

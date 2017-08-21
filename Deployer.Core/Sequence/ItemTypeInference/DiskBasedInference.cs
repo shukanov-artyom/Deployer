@@ -6,40 +6,28 @@ namespace Deployer.Core.Sequence.ItemTypeInference
 {
     public class DiskBasedInference : IDiffActionItemTypeInference
     {
-        private readonly string linePathPart;
         private readonly ApplicationOptions options;
 
-        public DiskBasedInference(
-            ApplicationOptions options,
-            string linePathPart)
+        public DiskBasedInference(ApplicationOptions options)
         {
-            this.linePathPart = linePathPart;
             this.options = options;
         }
 
-        public DiffActionItemTargetType TargetType
+        public DiffActionItemTargetType Infer(string path)
         {
-            get
+            string localSolutionRootPath = options.LocalSolutionRootPath;
+            string localItemPath = Path.Combine(
+                localSolutionRootPath,
+                path);
+            if (Directory.Exists(localItemPath))
             {
-                string localSolutionRootPath = options.LocalSolutionRootPath;
-                string localItemPath = Path.Combine(
-                    localSolutionRootPath,
-                    linePathPart);
-                if (Directory.Exists(localItemPath))
-                {
-                    return DiffActionItemTargetType.Folder;
-                }
-                if (File.Exists(localItemPath))
-                {
-                    return DiffActionItemTargetType.File;
-                }
-                throw new NotSupportedException("Unrecognized item type.");
+                return DiffActionItemTargetType.Folder;
             }
-        }
-
-        public DiffActionItemTargetType Infer()
-        {
-            throw new NotImplementedException();
+            if (File.Exists(localItemPath))
+            {
+                return DiffActionItemTargetType.File;
+            }
+            throw new NotSupportedException("Unrecognized item type.");
         }
     }
 }

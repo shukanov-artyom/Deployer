@@ -11,7 +11,7 @@ namespace Deployer.Core.Test.Parsing
         [InlineData(
             @" D      Tools\Database\MwpMigration\MigratorProc\Scripts",
             @"Tools\Database\MwpMigration\MigratorProc\Scripts",
-            DiffActionType.Modified,
+            DiffActionType.Deleted,
             DiffActionItemTargetType.Folder)]
         public void ParserTest(string line,
             string expectedPath,

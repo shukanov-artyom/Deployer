@@ -14,8 +14,8 @@ namespace Deployer.Core
             new DiffSequenceFactory(options).Create()
                 .FilterSequence<DefaultFilterCollection>()
                 .OrderSequence<DefaultOrderingStrategy>()
-                .ConvertPathsToRemoteMachineFormat(options)
-                .ConvertToCmdCommands()
+                .ConvertPathsToRemoteMachineFormat()
+                .ConvertToCmdCommands(options)
                 .SaveToFile(options.OutputDeploymentScenarioFilePath);
         }
     }

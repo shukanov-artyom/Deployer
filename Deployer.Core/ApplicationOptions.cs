@@ -66,7 +66,6 @@ namespace Deployer.Core
 
         /// <summary>
         /// Local solution root path. Current local working folder.
-        /// Example: 
         /// </summary>
         public string LocalSolutionRootPath { get; }
     }

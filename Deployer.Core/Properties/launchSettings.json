@@ -2,7 +2,7 @@
   "profiles": {
     "Deployer.Core": {
       "commandName": "Project",
-      "commandLineArgs": "branch2.orthobullets.com Username ppk.key /d/root/folder d:\\dev\\ORTB-MERGE-WEBSITES\\Tools\\Deployment\\Deployer\\Deployer.Core.Test\\rev.txt d:\\dev\\ORTB-MERGE-WEBSITES\\Tools\\Deployment\\Deployer\\Deployer.Core.Test\\out.cmd d:\\dev\\ORTB-MERGE-WEBSITES\\"
+      "commandLineArgs": "branch2.orthobullets.com Username ppk.key /cygdrive/d/Ftp-root/Folder1/folder2 D:\\dev\\deployer\\Deployer.Core.Test\\rev.txt D:\\dev\\deployer\\Deployer.Core.Test\\out.cmd d:\\dev\\ORTB-MERGE-WEBSITES\\"
     }
   }
 }
