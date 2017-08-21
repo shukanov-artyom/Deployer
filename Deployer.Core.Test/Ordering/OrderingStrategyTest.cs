@@ -25,7 +25,8 @@ namespace Deployer.Core.Test.Ordering
             List<DiffActionItem> result = 
                 factory.Create(new DefaultOrderingStrategy()).ToList();
             Assert.Equal(result.Count, 4);
-            Assert.Equals();
+            Assert.Equal(result[0].TargetType, DiffActionItemTargetType.Folder);
+            Assert.Equal(result[0].Action, DiffActionType.Added);
         }
     }
 }
