@@ -1,9 +1,8 @@
-﻿using System;
-using Deployer.Core.ActionItems;
+﻿using Deployer.Core.ActionItems;
 using Deployer.Core.Sequence;
 using Xunit;
 
-namespace Deployer.Core.Test
+namespace Deployer.Core.Test.Parsing
 {
     public class ActionLetterParserTest
     {

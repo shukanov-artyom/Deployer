@@ -24,15 +24,15 @@ namespace Deployer.Core.FluentSyntax
             return new FiltrationEngine<TFilters>().Filter(collection);
         }
 
-        public static IEnumerable<string> ConvertToCmdCommands(
-            this IEnumerable<DiffActionItem> orderedSequence)
+        public static IEnumerable<DiffActionItem> ConvertPathsToRemoteMachineFormat(
+            this IEnumerable<DiffActionItem> sequence,
+            ApplicationOptions options)
         {
             throw new NotImplementedException();
         }
 
-        public static IEnumerable<DiffActionItem> ConvertPathsToRemoteMachineFormat(
-            this IEnumerable<DiffActionItem> sequence,
-            ApplicationOptions options)
+        public static IEnumerable<string> ConvertToCmdCommands(
+            this IEnumerable<DiffActionItem> orderedSequence)
         {
             throw new NotImplementedException();
         }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Deployer.Core.ActionItems;
-using Deployer.Core.Ordering;
 
-namespace Deployer.Core.Sequence
+namespace Deployer.Core.Ordering
 {
     public class DiffOrderedSequenceFactory
     {

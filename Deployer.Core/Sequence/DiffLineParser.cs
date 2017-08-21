@@ -34,7 +34,6 @@ namespace Deployer.Core.Sequence
                     inference = new DiskBasedInference(options, path);
                 }
                 DiffActionItemTargetType target = inference.Infer();
-                throw new NotImplementedException("Path should be retrieved here");
                 return new DiffActionItem(target, action, path);
             }
         }

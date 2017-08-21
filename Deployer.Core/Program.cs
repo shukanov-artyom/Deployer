@@ -6,7 +6,7 @@ using Deployer.Core.Sequence;
 
 namespace Deployer.Core
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {

@@ -5,9 +5,12 @@ namespace Deployer.Core.Filtering
 {
     public class SqlScriptsFilter : IActionItemFilter
     {
+        private const string PathSegment = @"website\database";
+
         public bool Fits(DiffActionItem item)
         {
-            throw new NotImplementedException();
+            return !item.ItemRelativePath.ToUpper()
+                .Contains(PathSegment.ToUpper());
         }
     }
 }

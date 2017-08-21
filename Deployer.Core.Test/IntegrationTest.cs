@@ -1,5 +1,4 @@
 ﻿using System;
-using DiffToFtp2;
 using Xunit;
 
 namespace Deployer.Core.Test
@@ -9,8 +8,7 @@ namespace Deployer.Core.Test
         [Fact]
         public void ProcessDiffFile()
         {
-//            ApplicationOptions options = 
-//            var processor = new DiffFileProcessor();
+            throw new NotImplementedException();
         }
     }
 }

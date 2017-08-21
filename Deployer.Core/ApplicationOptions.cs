@@ -15,6 +15,24 @@ namespace Deployer.Core
             LocalSolutionRootPath = args[6];
         }
 
+        public ApplicationOptions(
+            string serverAddress,
+            string userName,
+            string password,
+            string websiteRootFolder,
+            string diffFilePath,
+            string outputFilePath,
+            string localSolutionRootPath)
+        {
+            ServerAddress = serverAddress;
+            UserName = userName;
+            Password = password;
+            WebsiteRootFolder = websiteRootFolder;
+            DiffFilePath = diffFilePath;
+            OutputDeploymentScenarioFilePath = outputFilePath;
+            LocalSolutionRootPath = localSolutionRootPath;
+        }
+
         /// <summary>
         /// DNS Address of a server to upload files to.
         /// </summary>
