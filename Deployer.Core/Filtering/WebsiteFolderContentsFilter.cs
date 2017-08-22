@@ -5,12 +5,12 @@ namespace Deployer.Core.Filtering
 {
     public class WebsiteFolderContentsFilter : IActionItemFilter
     {
-        private const string PathObligatorySegment = "website";
+        private const string PathObligatorySegment = @"website\";
 
         public bool Fits(DiffActionItem item)
         {
             return item.ItemRelativePathSource.ToUpper()
-                .Contains(PathObligatorySegment.ToUpper());
+                .StartsWith(PathObligatorySegment.ToUpper());
         }
     }
 }
