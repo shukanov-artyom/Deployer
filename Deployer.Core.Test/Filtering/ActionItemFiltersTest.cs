@@ -75,7 +75,7 @@ namespace Deployer.Core.Test.Filtering
         {
             public bool Fits(DiffActionItem item)
             {
-                return item.ItemRelativePath.ToUpper().Contains("VALIDPATH");
+                return item.ItemRelativePathSource.ToUpper().Contains("VALIDPATH");
             }
         }
 

@@ -22,7 +22,7 @@ namespace Deployer.Core.Test.Parsing
             DiffLineParser parser = new DiffLineParser(options, line);
             var result = parser.Item;
             Assert.Equal(result.Action, expectedAction);
-            Assert.Equal(result.ItemRelativePath, expectedPath);
+            Assert.Equal(expectedPath, result.ItemRelativePathSource);
             Assert.Equal(result.TargetType, expectedTarget);
         }
 

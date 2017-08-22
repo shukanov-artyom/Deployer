@@ -9,7 +9,7 @@ namespace Deployer.Core.Filtering
 
         public bool Fits(DiffActionItem item)
         {
-            return !item.ItemRelativePath.ToUpper().EndsWith(ConfigMarker);
+            return !item.ItemRelativePathTarget.ToUpper().EndsWith(ConfigMarker);
         }
     }
 }

@@ -17,9 +17,9 @@ namespace Deployer.Core.ToCmd
         {
             string fileToUploadAbsolutePath =
                 Path.Combine(Options.LocalSolutionRootPath,
-                    item.ItemRelativePath);
+                    item.ItemRelativePathSource);
             string targetAbsoluteFilePath =
-                $"{Options.WebsiteRootFolder}/{item.ItemRelativePath}";
+                $"{Options.WebsiteRootFolder}/{item.ItemRelativePathTarget}";
             return $@"{ScpToolName} -P 2200 -l {Options.UserName} -i {Options.Password} {fileToUploadAbsolutePath} {Options.ServerAddress}:{targetAbsoluteFilePath}";
         }
     }

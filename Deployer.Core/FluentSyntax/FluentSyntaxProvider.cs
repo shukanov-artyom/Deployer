@@ -38,10 +38,9 @@ namespace Deployer.Core.FluentSyntax
             PathConverter converter = new PathConverter(conversions);
             foreach (var item in sequence)
             {
-                string convertedPath = converter.Convert(item.ItemRelativePath);
-                yield return new DiffActionItem(item.TargetType,
-                    item.Action,
-                    convertedPath);
+                item.ItemRelativePathTarget =
+                    converter.Convert(item.ItemRelativePathTarget);
+                yield return item;
             }
         }
 

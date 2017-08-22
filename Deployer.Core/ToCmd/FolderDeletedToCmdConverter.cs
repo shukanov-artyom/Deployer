@@ -15,7 +15,7 @@ namespace Deployer.Core.ToCmd
         public string Convert(DiffActionItem item)
         {
             string targetAbsoluteFilePath =
-                $"{Options.WebsiteRootFolder}/{item.ItemRelativePath}";
+                $"{Options.WebsiteRootFolder}/{item.ItemRelativePathTarget}";
             return $@"{SshToolName} -P 2200 -l {Options.UserName} -i {Options.Password} {Options.ServerAddress} rm -rf {targetAbsoluteFilePath}";
         }
     }

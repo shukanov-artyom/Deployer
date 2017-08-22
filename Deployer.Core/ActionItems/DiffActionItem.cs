@@ -7,11 +7,11 @@ namespace Deployer.Core.ActionItems
         public DiffActionItem(
             DiffActionItemTargetType targetType,
             DiffActionType action,
-            string itemRelativePath)
+            string itemRelativePathSource)
         {
             TargetType = targetType;
             Action = action;
-            ItemRelativePath = itemRelativePath;
+            ItemRelativePathSource = itemRelativePathSource;
         }
 
         public DiffActionItemTargetType TargetType
@@ -25,12 +25,21 @@ namespace Deployer.Core.ActionItems
         }
 
         /// <summary>
+        /// Path as it should look like in a source environment (dev server local)
+        /// </summary>
+        public string ItemRelativePathSource
+        {
+            get;
+        }
+
+        /// <summary>
         /// Pure path as it should be in target system.
         /// Relative to web application root folder path.
         /// </summary>
-        public string ItemRelativePath
+        public string ItemRelativePathTarget
         {
             get;
+            set;
         }
     }
 }

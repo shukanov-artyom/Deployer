@@ -15,7 +15,10 @@ namespace Deployer.Core.Test.ToCmd
             var item = new DiffActionItem(
                 DiffActionItemTargetType.File,
                 DiffActionType.Deleted,
-                @"App_Code/Views/View.cshtml");
+                @"App_Code\Views\View.cshtml")
+            {
+                ItemRelativePathTarget = @"App_Code/Views/View.cshtml"
+            };
             string expectedResult =
                 "plink -P 2200 -l username -i userSecret address.server.com rm /cygdrive/d/Ftp-root/responsive-design.orthobullets.com/App_Code/Views/View.cshtml";
             string result = converter.Convert(item);

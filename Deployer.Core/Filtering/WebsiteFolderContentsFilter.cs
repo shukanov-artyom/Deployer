@@ -9,7 +9,7 @@ namespace Deployer.Core.Filtering
 
         public bool Fits(DiffActionItem item)
         {
-            return item.ItemRelativePath.ToUpper()
+            return item.ItemRelativePathSource.ToUpper()
                 .Contains(PathObligatorySegment.ToUpper());
         }
     }
