@@ -39,7 +39,7 @@ namespace Deployer.Core.FluentSyntax
             foreach (var item in sequence)
             {
                 item.ItemRelativePathTarget =
-                    converter.Convert(item.ItemRelativePathTarget);
+                    converter.Convert(item.ItemRelativePathSource);
                 yield return item;
             }
         }
