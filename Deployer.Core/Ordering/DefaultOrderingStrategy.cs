@@ -10,6 +10,10 @@ namespace Deployer.Core.Ordering
             ai => ai.TargetType == DiffActionItemTargetType.Folder
                 && ai.Action == DiffActionType.Added;
 
+        private readonly Func<DiffActionItem, bool> addedFiles =
+            ai => ai.TargetType == DiffActionItemTargetType.File
+                  && ai.Action == DiffActionType.Added;
+
         private readonly Func<DiffActionItem, bool> modifiedFiles =
             ai => ai.TargetType == DiffActionItemTargetType.File
                   && ai.Action == DiffActionType.Modified;
@@ -27,6 +31,7 @@ namespace Deployer.Core.Ordering
             get
             {
                 yield return addedFolders;
+                yield return addedFiles;
                 yield return modifiedFiles;
                 yield return deletedFiles;
                 yield return deletedFolders;
