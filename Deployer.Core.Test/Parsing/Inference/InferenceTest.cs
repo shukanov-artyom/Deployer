@@ -36,7 +36,8 @@ namespace Deployer.Core.Test.Parsing.Inference
                 @"c:\WebsiteRootFolder",
                 @"C:\diffs.txt",
                 @"d:/output.txt",
-                currentDir);
+                currentDir,
+                serverPort: 1234);
             var inference = new DiskBasedInference(options);
             // we are pretty sure this file must be there
             var result = inference.Infer("Deployer.Core.Test.dll");
@@ -52,7 +53,8 @@ namespace Deployer.Core.Test.Parsing.Inference
                 @"c:\WebsiteRootFolder",
                 @"C:\diffs.txt",
                 @"d:/output.txt",
-                @"d:\dev\root");
+                @"d:\dev\root",
+                serverPort: 1234);
         }
     }
 }

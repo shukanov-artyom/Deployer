@@ -19,7 +19,7 @@ namespace Deployer.Core.Test.ToCmd
             }; // like it's changed by path modificator
             var options = new ApplicationOptionsTestProvider().Provide();
             string expectedResult =
-                "plink -P 2200 -l username -i userSecret address.server.com rm -rf /cygdrive/d/Ftp-root/responsive-design.orthobullets.com/App_Code/Views";
+                "plink -P 1234 -l username -i userSecret address.server.com rm -rf /cygdrive/d/Ftp-root/responsive-design.orthobullets.com/App_Code/Views";
             var converter = new FolderDeletedToCmdConverter(options);
             string result = converter.Convert(item);
             Assert.Equal(result, expectedResult);

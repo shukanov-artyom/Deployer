@@ -13,7 +13,8 @@ namespace Deployer.Core.Test.ToCmd
                 websiteRootFolder: @"/cygdrive/d/Ftp-root/responsive-design.orthobullets.com",
                 diffFilePath: @"C:\diffs.txt",
                 outputFilePath: @"d:\output.txt",
-                localSolutionRootPath: @"C:\Local\Website\Directory");
+                localSolutionRootPath: @"C:\Local\Website\Directory",
+                serverPort: 1234);
         }
     }
 }

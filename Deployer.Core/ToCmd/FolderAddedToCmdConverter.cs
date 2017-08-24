@@ -16,7 +16,7 @@ namespace Deployer.Core.ToCmd
         {
             string targetAbsoluteFilePath =
                 $"{Options.WebsiteRootFolder}/{item.ItemRelativePathTarget}";
-            return $@"{SshToolName} -P 2200 -l {Options.UserName} -i {Options.Password} {Options.ServerAddress} mkdir -p {targetAbsoluteFilePath}";
+            return $@"{SshToolName} -P {Options.ServerPort} -l {Options.UserName} -i {Options.Password} {Options.ServerAddress} mkdir -p {targetAbsoluteFilePath}";
         }
     }
 }

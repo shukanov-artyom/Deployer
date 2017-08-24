@@ -13,6 +13,7 @@ namespace Deployer.Core
             DiffFilePath = args[4];
             OutputDeploymentScenarioFilePath = args[5];
             LocalSolutionRootPath = args[6];
+            ServerPort = Int32.Parse(args[7]);
         }
 
         public ApplicationOptions(
@@ -22,7 +23,8 @@ namespace Deployer.Core
             string websiteRootFolder,
             string diffFilePath,
             string outputFilePath,
-            string localSolutionRootPath)
+            string localSolutionRootPath,
+            int serverPort)
         {
             ServerAddress = serverAddress;
             UserName = userName;
@@ -31,12 +33,18 @@ namespace Deployer.Core
             DiffFilePath = diffFilePath;
             OutputDeploymentScenarioFilePath = outputFilePath;
             LocalSolutionRootPath = localSolutionRootPath;
+            ServerPort = serverPort;
         }
 
         /// <summary>
         /// DNS Address of a server to upload files to.
         /// </summary>
         public string ServerAddress { get; }
+
+        /// <summary>
+        /// Port to connect to server.
+        /// </summary>
+        public int ServerPort { get; }
 
         /// <summary>
         /// Username to supply to SSH tool.

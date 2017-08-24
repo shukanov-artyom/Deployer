@@ -35,7 +35,8 @@ namespace Deployer.Core.Test.Parsing
                 @"c:\WebsiteRootFolder",
                 @"C:\diffs.txt",
                 @"d:/output.txt",
-                @"d:\dev\root");
+                @"d:\dev\root",
+                serverPort: 1234);
         }
     }
 }
