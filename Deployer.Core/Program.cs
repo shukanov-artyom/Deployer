@@ -15,6 +15,7 @@ namespace Deployer.Core
                 .FilterSequence<DefaultFilterCollection>()
                 .OrderSequence<DefaultOrderingStrategy>()
                 .ConvertPathsToRemoteMachineFormat()
+                //.AppendObligatoryItems(options)
                 .ConvertToCmdCommands(options)
                 .SaveToFile(options.OutputDeploymentScenarioFilePath);
         }

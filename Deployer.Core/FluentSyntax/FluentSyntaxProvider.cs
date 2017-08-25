@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.IO;
 using Deployer.Core.ActionItems;
 using Deployer.Core.Filtering;
+using Deployer.Core.ObligatoryDeployment;
 using Deployer.Core.Ordering;
 using Deployer.Core.PathConversion;
 using Deployer.Core.Sequence;
 using Deployer.Core.ToCmd;
+using Microsoft.Extensions.Configuration;
 
 namespace Deployer.Core.FluentSyntax
 {
@@ -52,6 +54,18 @@ namespace Deployer.Core.FluentSyntax
             {
                 yield return new ToCmdConverterFactory(options, item).Create().Convert(item);
             }
+        }
+
+        public static IEnumerable<DiffActionItem> AppendObligatoryItems(
+            this IEnumerable<DiffActionItem> orderedSequence,
+            ApplicationOptions options)
+        {
+            const string json = "obligatoryDeployments.json";
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile(json).Build();
+            var obligatoryDeploymentsConfig =
+                new ObligatoryDeploymentsConfiguration(builder.Build());
+            throw new NotImplementedException();
         }
 
         public static void SaveToFile(
