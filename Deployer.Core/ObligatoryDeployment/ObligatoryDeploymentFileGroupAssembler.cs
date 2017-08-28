@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Deployer.Core.ObligatoryDeployment.Dto;
 
 namespace Deployer.Core.ObligatoryDeployment
 {
+    /// <summary>
+    /// Assembles File group from DTO objects.
+    /// </summary>
     public class ObligatoryDeploymentFileGroupAssembler
     {
         private readonly List<ObligatoryDeploymentFileGroupDto> fileGroups;
@@ -22,7 +26,23 @@ namespace Deployer.Core.ObligatoryDeployment
 
         public List<ObligatoryDeploymentFileGroup> Assemble()
         {
-            throw new NotImplementedException();
+            Dictionary<string, string> sourceFoldersMapping =
+                sourceFolders.ToDictionary(k => k.Id, v => v.Path);
+            Dictionary<string, string> targetFoldersMapping =
+                targetFolders.ToDictionary(k => k.Id, v => v.Path);
+            var result = new List<ObligatoryDeploymentFileGroup>();
+            foreach (var fileGroupDto in fileGroups)
+            {
+                var item = new ObligatoryDeploymentFileGroup();
+                item.SourceFolder = sourceFoldersMapping[fileGroupDto.SourceFolder];
+                item.TargetFolder = targetFoldersMapping[fileGroupDto.TargetFolder];
+                foreach (var path in fileGroupDto.Filenames)
+                {
+                    item.Filenames.Add(path);
+                }
+                result.Add(item);
+            }
+            return result;
         }
     }
 }

@@ -6,7 +6,6 @@ using Deployer.Core.Filtering;
 using Deployer.Core.ObligatoryDeployment;
 using Deployer.Core.Ordering;
 using Deployer.Core.PathConversion;
-using Deployer.Core.Sequence;
 using Deployer.Core.ToCmd;
 using Microsoft.Extensions.Configuration;
 
@@ -56,16 +55,26 @@ namespace Deployer.Core.FluentSyntax
             }
         }
 
-        public static IEnumerable<DiffActionItem> AppendObligatoryItems(
-            this IEnumerable<DiffActionItem> orderedSequence,
+        public static IEnumerable<string> AppendObligatoryItems(
+            this IEnumerable<string> orderedSequence,
             ApplicationOptions options)
         {
+            // return all provided itemss
+            foreach (string previous in orderedSequence)
+            {
+                yield return previous;
+            }
+            // append new items
             const string json = "obligatoryDeployments.json";
             var builder = new ConfigurationBuilder();
             builder.AddJsonFile(json).Build();
             var obligatoryDeploymentsConfig =
                 new ObligatoryDeploymentsConfiguration(builder.Build());
-            throw new NotImplementedException();
+            foreach (var item in new ObligatoryActionItemsProvider(
+                obligatoryDeploymentsConfig).Items)
+            {
+                yield return new ObligatoryItemToCmdConverter(options).Convert(item);
+            }
         }
 
         public static void SaveToFile(

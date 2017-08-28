@@ -11,16 +11,22 @@ namespace Deployer.Core.Test.Obligatory
         [Fact]
         public void TestAssemblyCorrectness()
         {
-            throw new NotImplementedException();
-            //            List<ObligatoryDeploymentFileGroupDto> groupDtos =
-            //                GetGroupDtos();
-            //            var assembler = new ObligatoryDeploymentFileGroupAssembler(
-            //                )
+            var groupDtos =
+                GetTyped<List<ObligatoryDeploymentFileGroupDto>>("sourceFileGroups");
+            var sourceFolders =
+                GetTyped<List<ObligatoryDeploymentFolder>>("sourceFolders");
+            var targetFolders =
+                GetTyped<List<ObligatoryDeploymentFolder>>("targetFolders");
+            var assembler = new ObligatoryDeploymentFileGroupAssembler(
+                groupDtos,
+                sourceFolders,
+                targetFolders);
+            var result = assembler.Assemble();
+            Assert.NotNull(result);
+            var group = result[0];
+            Assert.Equal("website\\Bin\\", group.SourceFolder);
+            Assert.Equal("/cygdrive/d/Ftp-root/responsive-design.orthobullets.com/Bin", group.TargetFolder);
+            Assert.Equal(7, group.Filenames.Count);
         }
-
-//        public List<ObligatoryDeploymentFileGroupDto> GetGroupDtos()
-//        {
-//            
-//        }
     }
 }
